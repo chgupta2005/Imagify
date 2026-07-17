@@ -1,20 +1,22 @@
-
-# Imagify
+# Pixora
 
 
 A **full-stack AI web application** that transforms your **text prompts into stunning images** using cutting-edge AI models.
-Built with the **MERN stack** (MongoDB, Express.js, React, Node.js), styled using **TailwindCSS**, and enhanced with **Framer Motion** animations — Imagify delivers a smooth, interactive, and visually appealing experience for users.
+Built with the **MERN stack** (MongoDB, Express.js, React, Node.js), styled using **TailwindCSS**, and enhanced with **Framer Motion** animations — Pixora delivers a smooth, interactive, and visually appealing experience for users.
 
 ---
 
 ## 🚀 Features
 
-*  **AI Text-to-Image Generation** — Convert text prompts into images in seconds.
+*  **AI Text-to-Image Generation** — Convert text prompts into images in seconds using the Clipdrop API.
+*  **Premium Glassmorphism UI** — High-end frosted glass effects, sleek borders, and layered shadows for a stunning, modern look.
+*  **Interactive 3D Parallax & Physics** — Framer Motion-powered spring physics and interactive 3D card tilts on hover.
+*  **Dynamic Dark & Light Modes** — Full seamless theme switching with aesthetic segmented toggles and animated ambient background glows.
 *  **Image Management** — Save, view, or share generated images.
-*  **Authentication** — Secure JWT-based login system.
+*  **Authentication** — Secure JWT-based login system with beautifully frosted, high-contrast glassy modals.
 *  **Razorpay Integration** — For premium or credit-based image generation.
-*  **Smooth UI** — Built with TailwindCSS and Framer Motion.
 *  **Full-Stack Architecture** — MERN stack ensures flexibility and scalability.
+*  **Cloud Deployment** — Frontend deployed on Vercel and Backend deployed on Render.
 
 ---
 
@@ -31,10 +33,8 @@ Built with the **MERN stack** (MongoDB, Express.js, React, Node.js), styled usin
 ### 🔹 Clone the Repository
 
 ```bash
-git clone https://github.com/chgupta2005/Imagify.git
-
-
-cd Imagify
+git clone https://github.com/chgupta2005/Pixora.git
+cd Pixora
 ```
 
 ---
@@ -136,7 +136,7 @@ npm run server
 6. In `mongodb.js`, connect using:
 
    ```js
-   await mongoose.connect(`${process.env.MONGODB_URI}/Imagify`);
+   await mongoose.connect(`${process.env.MONGODB_URI}/Pixora`);
    ```
 
 ---
@@ -146,11 +146,13 @@ npm run server
 Create a `.env` file inside the **Server** folder with:
 
 ```
-PORT=5000
+PORT=4000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-RAZORPAY_KEY=your_razorpay_key
-RAZORPAY_SECRET=your_razorpay_secret
+CLIPDROP_API=your_clipdrop_api_key
+CURRENCY=INR
+RAZORPAY_KEY_ID=your_razorpay_key
+RAZORPAY_KEY_SECRET=your_razorpay_secret
 ```
 ---
 
@@ -159,7 +161,6 @@ RAZORPAY_SECRET=your_razorpay_secret
 *  User image gallery with sharing options
 *  Advanced AI models (Stable Diffusion / Flux / DALL·E integration)
 *  Download and history feature
-*  Cloud deployment (Render + Vercel combo)
 
 ---
 

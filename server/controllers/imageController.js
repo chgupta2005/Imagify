@@ -19,7 +19,7 @@ export const generateImage = async (req, res) => {
     }
 
     // Checking User creditBalance
-    if (user.creditBalance === 0 || userModel.creditBalance < 0) {
+    if (user.creditBalance <= 0) {
       return res.json({ success: false, message: 'No Credit Balance', creditBalance: user.creditBalance })
     }
 
@@ -32,10 +32,10 @@ export const generateImage = async (req, res) => {
       headers: {
         'x-api-key': process.env.CLIPDROP_API,
       },
-      responseType: "arraybuffer"
+      responseType: 'arraybuffer'
     })
 
-    // Convertion of arrayBuffer to base64
+    // Conversion of buffer to base64
     const base64Image = Buffer.from(data, 'binary').toString('base64');
     const resultImage = `data:image/png;base64,${base64Image}`
 
@@ -43,10 +43,10 @@ export const generateImage = async (req, res) => {
     await userModel.findByIdAndUpdate(user._id, { creditBalance: user.creditBalance - 1 })
 
     // Sending Response
-    res.json({ success: true, message: "Background Removed", resultImage, creditBalance: user.creditBalance - 1 })
+    res.json({ success: true, message: "Image Generated", resultImage, creditBalance: user.creditBalance - 1 })
 
   } catch (error) {
-    console.log(error.message)
+    console.log(error.response ? error.response.data.toString() : error.message)
     res.json({ success: false, message: error.message })
   }
 }
